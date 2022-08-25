@@ -3,20 +3,32 @@ import { View, Text, StyleSheet } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
-  withTiming,
+  withSpring,
+  withRepeat,
 } from "react-native-reanimated";
+
+const DEFAULT_SIZE = 100;
 
 const SquareAnimationScreen = () => {
   const progress = useSharedValue(1);
+  const scale = useSharedValue(2);
+
+  const handleRotation = (progress: Animated.SharedValue<number>) => {
+    "worklet";
+    return `${progress.value * 2 * Math.PI}rad`;
+  };
 
   const reanimatedStyle = useAnimatedStyle(() => {
     return {
       opacity: progress.value,
+      borderRadius: (progress.value * DEFAULT_SIZE) / 2,
+      transform: [{ scale: scale.value }, { rotate: handleRotation(progress) }],
     };
   }, []);
 
   useEffect(() => {
-    progress.value = withTiming(0, { duration: 2000 });
+    progress.value = withRepeat(withSpring(0.5), 3, true);
+    scale.value = withRepeat(withSpring(1), 3, true);
   }, []);
 
   return (
@@ -34,8 +46,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   square: {
-    height: 100,
-    width: 100,
+    height: DEFAULT_SIZE,
+    width: DEFAULT_SIZE,
     backgroundColor: "blue",
   },
 });

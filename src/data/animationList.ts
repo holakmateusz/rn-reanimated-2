@@ -14,6 +14,10 @@ const getAvailableAnimations = (): AnimationType[] => {
     {
       name:"Resize square animation",
       route:"ResizeAnimation",
+    },
+    {
+      name:"Gesture - circle square animation",
+      route:"GestureAnimation"
     }
   ];
 };

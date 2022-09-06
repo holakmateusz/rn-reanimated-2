@@ -4,6 +4,7 @@ export type RootStackParamList = {
   AnimationList: undefined;
   SquareAnimation: undefined;
   ResizeAnimation:undefined;
+  GestureAnimation:undefined;
 };
 
 export type RootStackScreenProp<T extends keyof RootStackParamList> =

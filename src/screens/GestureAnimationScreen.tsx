@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { View, StyleSheet, Button } from "react-native";
+import React from "react";
+import { View, StyleSheet } from "react-native";
 import {
   GestureHandlerRootView,
   PanGestureHandler,
@@ -28,7 +28,7 @@ const GestureAnimationScreen = () => {
     PanGestureHandlerGestureEvent,
     ContextInterface
   >({
-    onStart: (event, context) => {
+    onStart: (_, context) => {
       context.translateX = translateX.value;
       context.translateY = translateY.value;
     },
@@ -36,7 +36,7 @@ const GestureAnimationScreen = () => {
       translateX.value = event.translationX + context.translateX;
       translateY.value = event.translationY + context.translateY;
     },
-    onEnd: (event, context) => {
+    onEnd: () => {
       const distance = Math.sqrt(translateX.value ** 2 + translateY.value ** 2);
       if (distance < CIRCLE_RADIUS) {
         translateX.value = withSpring(0);

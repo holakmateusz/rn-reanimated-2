@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AnimatedListItemScreen from "../screens/AnimatedListItemScreen";
 import AnimationListScreen from "../screens/AnimationListScreen";
 import GestureAnimationScreen from "../screens/GestureAnimationScreen";
 import ResizeAnimationScreen from "../screens/ResizeAnimationScreen";
@@ -16,6 +17,10 @@ const Root = () => {
       <Stack.Screen
         name="GestureAnimation"
         component={GestureAnimationScreen}
+      />
+      <Stack.Screen
+        name="AnimatedItemList"
+        component={AnimatedListItemScreen}
       />
     </Stack.Navigator>
   );

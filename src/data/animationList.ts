@@ -12,13 +12,17 @@ const getAvailableAnimations = (): AnimationType[] => {
       route: "SquareAnimation",
     },
     {
-      name:"Resize square animation",
-      route:"ResizeAnimation",
+      name: "Resize square animation",
+      route: "ResizeAnimation",
     },
     {
-      name:"Gesture - circle square animation",
-      route:"GestureAnimation"
-    }
+      name: "Gesture - circle square animation",
+      route: "GestureAnimation",
+    },
+    {
+      name: "List with animated items",
+      route: "AnimatedItemList",
+    },
   ];
 };
 
